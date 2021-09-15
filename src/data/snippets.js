@@ -50,6 +50,21 @@ class App extends Component {
     `.trim()
 	},
 	{
+		title: 'Render Lists',
+		text: 'Array von Elementen darstellen',
+		code: `
+render() {
+  return (
+    <div>
+      {this.state.users.map(user => (
+        <div key={user.id}>{user.name}</div>
+      ))}
+    </div>
+  )
+}
+    `.trim()
+	},
+	{
 		title: 'Button Events',
 		text: 'Event lesen und in State schreiben',
 		code: `
@@ -158,6 +173,29 @@ const App = () => (
 const Users = withRouter(props => {
   return <pre>{props.location.pathname}</pre>
 })      
+    `.trim()
+	},
+	{
+		title: 'Fetch Promise Cancelation',
+		text: 'Stop setState from calling after component unmount',
+		code: `
+class App extends Component {
+  state = { users: [] }
+  controller = new AbortController()
+
+  async componentDidMount() {
+    try {
+      const response = await fetch('/api/users', {
+        signal: this.controller.signal
+      })
+      this.setState({ users: await response.json() })
+    } catch (ex) {}
+  }
+
+  componentWillUnmount() {
+    this.controller.abort()
+  }
+}      
     `.trim()
 	}
 ]
