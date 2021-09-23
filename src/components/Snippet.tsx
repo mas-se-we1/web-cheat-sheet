@@ -1,16 +1,22 @@
-import React from 'react'
+import  { ReactNode } from 'react'
 import styled from 'styled-components/macro'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 
-export const Snippet = ({ title, text, children }) => (
+interface Props {
+	title: string
+	text?: string
+	children: ReactNode
+}
+
+export const Snippet = ({ title, text, children }: Props) => (
 	<>
 		<Title>
 			{title}
 			<Text>{text}</Text>
 		</Title>
-		<Code language="jsx" customStyle={{ margin: 0 }}>
+		<SyntaxHighlighter language="jsx" customStyle={{ margin: 0 }}>
 			{children}
-		</Code>
+		</SyntaxHighlighter>
 	</>
 )
 
@@ -23,5 +29,3 @@ const Text = styled.div`
 	font-size: 16px;
 	opacity: 0.7;
 `
-
-const Code = styled(SyntaxHighlighter)``
