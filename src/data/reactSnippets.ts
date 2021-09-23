@@ -1,4 +1,4 @@
-export const snippets = [
+export const reactSnippets = [
 	{
 		title: 'Component',
 		text: 'Komponente gliedert Applikation in Bausteine',

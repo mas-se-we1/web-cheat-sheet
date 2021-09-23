@@ -1,8 +1,8 @@
-# React Cheat Sheet
+# Web Cheat Sheet
 
 ## Purpose
 
-Basic syntax overview for react
+Basic syntax overview for TypeScript, React & Css.
 
 ## Run
 

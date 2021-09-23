@@ -1,13 +1,24 @@
-import { Snippet } from './components/Snippet'
+import { Redirect, Route, Switch } from 'react-router'
+import { AppBar } from './components/AppBar'
 import { SnippetContainer } from './components/SnippetContainer'
-import { snippets } from './data/snippets'
+import { cssSnippets } from './data/cssSnippets'
+import { reactSnippets } from './data/reactSnippets'
+import { tsSnippets } from './data/tsSnippets'
 
 export const App = () => (
-	<SnippetContainer>
-		{snippets.map(s => (
-			<Snippet key={s.title} title={s.title} text={s.text}>
-				{s.code}
-			</Snippet>
-		))}
-	</SnippetContainer>
+	<>
+		<AppBar />
+		<Switch>
+			<Route exact path="/typescript">
+				<SnippetContainer snippets={tsSnippets} />
+			</Route>
+			<Route exact path="/react">
+				<SnippetContainer snippets={reactSnippets} />
+			</Route>
+			<Route exact path="/css">
+				<SnippetContainer snippets={cssSnippets} />
+			</Route>
+			<Redirect to="react" />
+		</Switch>
+	</>
 )
