@@ -2,6 +2,7 @@ import styled from 'styled-components/macro'
 import { Snippet } from './Snippet'
 
 interface Props {
+	query: string
 	snippets: Array<{
 		title: string
 		text: string
@@ -9,14 +10,29 @@ interface Props {
 	}>
 }
 
-export const SnippetContainer = ({ snippets }: Props) => {
+export const SnippetContainer = ({ query, snippets }: Props) => {
+	let filteredSnippets = snippets
+	if (query) {
+		const lowQuery = query.toLowerCase()
+		filteredSnippets = snippets.filter(
+			s =>
+				s.code.toLowerCase().includes(lowQuery) ||
+				s.text.toLowerCase().includes(lowQuery) ||
+				s.title.toLowerCase().includes(lowQuery)
+		)
+	}
+
 	return (
 		<Container>
-			{snippets.map(s => (
-				<Snippet key={s.title} title={s.title} text={s.text}>
-					{s.code}
-				</Snippet>
-			))}
+			{filteredSnippets.length > 0 ? (
+				filteredSnippets.map(s => (
+					<Snippet key={s.title} title={s.title} text={s.text}>
+						{s.code}
+					</Snippet>
+				))
+			) : (
+				<div>Keine Resultate</div>
+			)}
 		</Container>
 	)
 }

@@ -1,7 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
-export const AppBar = () => (
+interface Props {
+	query: string
+	setQuery: (query: string) => void
+}
+
+export const AppBar = ({ query, setQuery }: Props) => (
 	<Bar>
 		<Title>Cheat Sheet</Title>
 		<NLink exact to="/typescript" activeStyle={activeStyle}>
@@ -13,6 +18,11 @@ export const AppBar = () => (
 		<NLink exact to="/css" activeStyle={activeStyle}>
 			CSS
 		</NLink>
+		<Search
+			value={query}
+			onChange={e => setQuery(e.target.value)}
+			placeholder="Suche..."
+		/>
 	</Bar>
 )
 
@@ -37,4 +47,11 @@ const NLink = styled(NavLink)`
 	padding: 0 20px;
 	color: #fff;
 	text-decoration: none;
+`
+
+const Search = styled.input`
+	border: none;
+	background: #fff;
+	padding: 5px 10px;
+	margin: 0 20px;
 `
