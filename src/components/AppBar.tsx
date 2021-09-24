@@ -21,6 +21,7 @@ export const AppBar = ({ query, setQuery }: Props) => (
 		<Search
 			value={query}
 			onChange={e => setQuery(e.target.value)}
+			type="search"
 			placeholder="Suche..."
 		/>
 	</Bar>
