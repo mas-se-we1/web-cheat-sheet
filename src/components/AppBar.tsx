@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import { CgDarkMode } from 'react-icons/cg'
 
 interface Props {
 	query: string
 	setQuery: (query: string) => void
+	toggleStyle: () => void
 }
 
-export const AppBar = ({ query, setQuery }: Props) => (
+export const AppBar = ({ query, setQuery, toggleStyle }: Props) => (
 	<Bar>
 		<Title>Cheat Sheet</Title>
 		<NLink exact to="/typescript" activeStyle={activeStyle}>
@@ -24,6 +26,10 @@ export const AppBar = ({ query, setQuery }: Props) => (
 			type="search"
 			placeholder="Suche..."
 		/>
+		<Toggle onClick={toggleStyle}>
+			<CgDarkMode />
+			<div>Toggle Code Styling</div>
+		</Toggle>
 	</Bar>
 )
 
@@ -55,4 +61,20 @@ const Search = styled.input`
 	background: #fff;
 	padding: 5px 10px;
 	margin: 0 20px;
+`
+
+const Toggle = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	color: #61dafb;
+	font-size: 14px;
+	cursor: pointer;
+	opacity: 0.5;
+	:hover {
+		opacity: 1;
+	}
+	:active {
+		color: #fff;
+	}
 `

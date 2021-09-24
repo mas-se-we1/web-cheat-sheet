@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { CodeStyle } from '../models/CodeStyle'
 import { Snippet } from './Snippet'
 
 interface Props {
@@ -8,9 +9,10 @@ interface Props {
 		text: string
 		code: string
 	}>
+	style: CodeStyle
 }
 
-export const SnippetContainer = ({ query, snippets }: Props) => {
+export const SnippetContainer = ({ query, snippets, style }: Props) => {
 	let filteredSnippets = snippets
 	if (query) {
 		const lowQuery = query.toLowerCase()
@@ -26,7 +28,7 @@ export const SnippetContainer = ({ query, snippets }: Props) => {
 		<Container>
 			{filteredSnippets.length > 0 ? (
 				filteredSnippets.map(s => (
-					<Snippet key={s.title} title={s.title} text={s.text}>
+					<Snippet key={s.title} title={s.title} text={s.text} style={style}>
 						{s.code}
 					</Snippet>
 				))
