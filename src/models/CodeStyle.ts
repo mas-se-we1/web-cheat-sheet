@@ -1,1 +1,1 @@
-export type CodeStyle = 'dark' | 'light'
+export type Theme = 'dark' | 'light'

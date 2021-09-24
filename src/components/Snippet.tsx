@@ -3,37 +3,48 @@ import styled from 'styled-components/macro'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus as darkStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { prism as lightStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { CodeStyle } from '../models/CodeStyle'
+import { Theme } from '../models/CodeStyle'
 
 interface Props {
 	title: string
 	text?: string
-	style: CodeStyle
+	theme: Theme
 	children: ReactNode
 }
 
-export const Snippet = ({ title, text, style, children }: Props) => (
-	<>
-		<Title>
-			{title}
-			<Text>{text}</Text>
-		</Title>
-		<SyntaxHighlighter
-			language="jsx"
-			customStyle={{ margin: 0, borderRadius: 3, fontSize: 13 }}
-			style={style === 'dark' ? darkStyle : lightStyle}
-		>
-			{children}
-		</SyntaxHighlighter>
-	</>
-)
+export const Snippet = ({ title, text, theme, children }: Props) => {
+	const customStyle: any = {
+		margin: 0,
+		borderRadius: 3,
+		fontSize: 13
+	}
+	if (theme === 'dark') {
+		customStyle.background = '#20232a'
+	}
+
+	return (
+		<>
+			<Title>
+				{title}
+				<Text>{text}</Text>
+			</Title>
+			<SyntaxHighlighter
+				language="jsx"
+				customStyle={customStyle}
+				style={theme === 'dark' ? darkStyle : lightStyle}
+			>
+				{children}
+			</SyntaxHighlighter>
+		</>
+	)
+}
 
 const Title = styled.div`
-	font-size: 20px;
-	max-width: 280px;
+	margin-top: 3px;
+	font-size: 18px;
 `
 
 const Text = styled.div`
-	font-size: 16px;
+	font-size: 15px;
 	opacity: 0.7;
 `
