@@ -47,6 +47,7 @@ export const App = () => {
 						<SnippetContainer
 							snippets={cssSnippets}
 							query={query}
+							language="css"
 							theme={theme}
 						/>
 					</Route>

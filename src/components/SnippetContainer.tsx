@@ -9,10 +9,16 @@ interface Props {
 		text: string
 		code: string
 	}>
+	language?: string
 	theme: Theme
 }
 
-export const SnippetContainer = ({ query, snippets, theme }: Props) => {
+export const SnippetContainer = ({
+	query,
+	snippets,
+	language,
+	theme
+}: Props) => {
 	let filteredSnippets = snippets
 	if (query) {
 		const lowQuery = query.toLowerCase()
@@ -28,7 +34,13 @@ export const SnippetContainer = ({ query, snippets, theme }: Props) => {
 		<Container>
 			{filteredSnippets.length > 0 ? (
 				filteredSnippets.map(s => (
-					<Snippet key={s.title} title={s.title} text={s.text} theme={theme}>
+					<Snippet
+						key={s.title}
+						title={s.title}
+						text={s.text}
+						language={language}
+						theme={theme}
+					>
 						{s.code}
 					</Snippet>
 				))

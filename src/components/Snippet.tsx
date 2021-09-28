@@ -8,11 +8,18 @@ import { Theme } from '../models/CodeStyle'
 interface Props {
 	title: string
 	text?: string
+	language?: string
 	theme: Theme
 	children: ReactNode
 }
 
-export const Snippet = ({ title, text, theme, children }: Props) => {
+export const Snippet = ({
+	title,
+	text,
+	language = 'jsx',
+	theme,
+	children
+}: Props) => {
 	const customStyle: any = {
 		margin: 0,
 		borderRadius: 3,
@@ -29,7 +36,7 @@ export const Snippet = ({ title, text, theme, children }: Props) => {
 				<Text>{text}</Text>
 			</Title>
 			<SyntaxHighlighter
-				language="jsx"
+				language={language}
 				customStyle={customStyle}
 				style={theme === 'dark' ? darkStyle : lightStyle}
 			>
