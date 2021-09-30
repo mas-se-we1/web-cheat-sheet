@@ -1,7 +1,7 @@
+import { CgDarkMode } from 'react-icons/cg'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { CgDarkMode } from 'react-icons/cg'
-import { Theme } from '../models/CodeStyle'
+import { Theme } from '../models/Theme'
 
 interface Props {
 	query: string
@@ -21,6 +21,9 @@ export const AppBar = ({ query, setQuery, theme, toggleTheme }: Props) => (
 		</NLink>
 		<NLink exact to="/css" activeStyle={activeStyle}>
 			CSS
+		</NLink>
+		<NLink exact to="/git" activeStyle={activeStyle}>
+			git
 		</NLink>
 		<Search
 			value={query}

@@ -4,10 +4,11 @@ import { createGlobalStyle } from 'styled-components'
 import { AppBar } from './components/AppBar'
 import { SnippetContainer } from './components/SnippetContainer'
 import { cssSnippets } from './data/cssSnippets'
+import { gitSnippets } from './data/gitSnippets'
 import { reactSnippets } from './data/reactSnippets'
 import { tsSnippets } from './data/tsSnippets'
 import { useStoredState } from './hooks/useStoredState'
-import { Theme } from './models/CodeStyle'
+import { Theme } from './models/Theme'
 
 export const App = () => {
 	const [query, setQuery] = useState('')
@@ -48,6 +49,14 @@ export const App = () => {
 							snippets={cssSnippets}
 							query={query}
 							language="css"
+							theme={theme}
+						/>
+					</Route>
+					<Route exact path="/git">
+						<SnippetContainer
+							snippets={gitSnippets}
+							query={query}
+							language="git"
 							theme={theme}
 						/>
 					</Route>

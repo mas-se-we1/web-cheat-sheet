@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Theme } from '../models/CodeStyle'
+import { Theme } from '../models/Theme'
 import { Snippet } from './Snippet'
 
 interface Props {

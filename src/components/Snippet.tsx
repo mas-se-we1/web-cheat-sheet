@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus as darkStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { prism as lightStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { Theme } from '../models/CodeStyle'
+import { Theme } from '../models/Theme'
 
 interface Props {
 	title: string

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Basic syntax overview for TypeScript, React & Css.
+Basic syntax overview for TypeScript, React, CSS & git.
 
 ## Run
 
