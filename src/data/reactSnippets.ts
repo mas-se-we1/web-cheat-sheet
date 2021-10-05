@@ -106,6 +106,26 @@ const ColorSelect = () => {
     `.trim()
 	},
 	{
+		title: 'Checkbox Events',
+		text: 'Change-Event lesen und in State schreiben',
+		code: `
+const Checkbox = () => {
+	const [checked, setChecked] = useState(false)
+
+	const updateText = () => {
+		setChecked(!checked)
+	}
+
+	return (
+		<label>
+			I Agree
+			<input type="checkbox" onChange={updateText} checked={checked} />
+		</label>
+	)
+}
+    `.trim()
+	},
+	{
 		title: 'Styling mit style',
 		text: 'Als JS-Objekt in style-Prop',
 		code: `

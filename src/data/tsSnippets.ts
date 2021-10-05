@@ -30,6 +30,14 @@ const notSet: undefined = undefined
     `.trim()
 	},
 	{
+		title: 'String interpolation',
+		text: 'Strings mit Backtick (`) in Kombination mit ${}',
+		code: `
+const dev = 'Max'
+const interpolation = \`Hello \${dev}. How are you?\`
+    `.trim()
+	},
+	{
 		title: 'Union Type',
 		text: 'Zusammenführen von Typen',
 		code: `
