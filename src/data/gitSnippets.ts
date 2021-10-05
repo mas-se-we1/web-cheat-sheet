@@ -15,7 +15,7 @@ git config --global user.email "<email>"
 	{
 		title: 'Repo Remote setzen',
 		text: 'push & pull verwendet diese URL',
-		code: `git remote add <repo-url>`.trim()
+		code: `git remote add origin <repo-url>`.trim()
 	},
 	{
 		title: 'Repo Remote anzeigen',
