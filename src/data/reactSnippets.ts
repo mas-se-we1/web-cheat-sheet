@@ -46,6 +46,41 @@ const Counter = () => {
     `.trim()
 	},
 	{
+		title: '`Add`-Callback für Array-State',
+		text: 'Füge neues Item zu Array hinzu',
+		code: `
+const addItem = (item: Person) => {
+  const newPersons = [...persons, item]
+  setPersons(newPersons)
+}
+    `.trim()
+	},
+	{
+		title: '`Remove`-Callback für Array-State',
+		text: 'Entferne Item aus Array',
+		code: `
+const removeItem = (id: string) => {
+  const newPersons = persons.filter(p => p.id !== id)
+  setPersons(newPersons)
+}
+    `.trim()
+	},
+	{
+		title: '`Update`-Callback für Array-State',
+		text: 'Mutiere Property eines Items in Array',
+		code: `
+const updateItem = (id: string, newName: string) => {
+  const newPersons = persons.map(p => {
+    if (p.id === id) {
+      return { ...p, name: newName }
+    }
+    return p
+  })
+  setPersons(newPersons)
+}
+    `.trim()
+	},
+	{
 		title: 'Render Lists',
 		text: 'Array von Elementen darstellen',
 		code: `
@@ -110,18 +145,18 @@ const ColorSelect = () => {
 		text: 'Change-Event lesen und in State schreiben',
 		code: `
 const Checkbox = () => {
-	const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false)
 
-	const updateText = () => {
-		setChecked(!checked)
-	}
+  const updateText = () => {
+    setChecked(!checked)
+  }
 
-	return (
-		<label>
-			I Agree
-			<input type="checkbox" onChange={updateText} checked={checked} />
-		</label>
-	)
+  return (
+    <label>
+      I Agree
+      <input type="checkbox" onChange={updateText} checked={checked} />
+    </label>
+  )
 }
     `.trim()
 	},
