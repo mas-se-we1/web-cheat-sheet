@@ -62,6 +62,18 @@ console.log(list[3]) // => 4
     `.trim()
 	},
 	{
+		title: 'Array Sortierung',
+		text: 'Aufsteigender Inline-Sort für Arrays',
+		code: `
+const names = ['Berta', 'Adam', 'Carl', 'Anton']
+names.sort((a, b) => {
+  if (a < b) return -1
+  if (a > b) return 1
+  return 0
+})
+    `.trim()
+	},
+	{
 		title: 'Interface',
 		text: 'Schnittstellendefinition',
 		code: `
@@ -116,6 +128,33 @@ const add = (a: number, b: number) => {
 const first = <T>(list: T[]): T => {
   return list[0]
 }
+    `.trim()
+	},
+	{
+		title: 'Union Types & Literal Types',
+		text: 'Explizite Werte als Typ definieren',
+		code: `
+type Status = 'initializing' | 'running' | 'done'
+const status: Status = 'running'
+    `.trim()
+	},
+	{
+		title: 'Function Types',
+		text: 'Funktionssignatur als Typ',
+		code: `
+type onClick = () => void
+type Add = (a: number, b: number) => number
+    `.trim()
+	},
+	{
+		title: 'Spread Operator',
+		text: 'Flaches Klonen von Arrays und Objekten',
+		code: `
+const array = [1, 2, 3]
+const arrayClone = [...array]
+
+const obj = { id: 7, name: 'George' }
+const objClone = { ...obj }
     `.trim()
 	}
 ]
