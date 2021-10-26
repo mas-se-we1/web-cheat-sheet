@@ -156,5 +156,21 @@ const arrayClone = [...array]
 const obj = { id: 7, name: 'George' }
 const objClone = { ...obj }
     `.trim()
+	},
+	{
+		title: 'Array Destructuring',
+		text: 'Items aus Array lesen',
+		code: `
+const row = [1, 2, 3, 4, 5]
+const [eins, zwei, drei] = row
+    `.trim()
+	},
+	{
+		title: 'Object Destructuring',
+		text: 'Properties aus Objekt lesen',
+		code: `
+const human = { legs: 2, head: 1, fingers: 10 }
+const { fingers, head } = human
+    `.trim()
 	}
 ]
