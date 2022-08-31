@@ -46,6 +46,32 @@ const Counter = () => {
     `.trim()
 	},
 	{
+		title: 'Lifecycle',
+		text: 'Auf mount, unmount & Daten-Änderungen reagieren',
+		code: `
+useEffect(() => {
+  subscribe(channel)
+	
+  return () => {
+    unsubscribe(channel)
+  }
+}, [channel])
+    `.trim()
+	},
+	{
+		title: 'Custom Hook',
+		text: 'useIncrement Beispiel',
+		code: `
+function useIncrement(initialValue: number = 0): [number, () => void] {
+  const [value, setValue] = useState(initialValue)
+
+  const increment = () => setValue(value + 1)
+
+  return [value, increment]
+}					
+    `.trim()
+	},
+	{
 		title: '`Add`-Callback für Array-State',
 		text: 'Füge neues Item zu Array hinzu',
 		code: `
