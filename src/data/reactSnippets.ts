@@ -176,5 +176,54 @@ const App = () => (
   <div className="greets">Hello World</div>
 )
     `.trim()
+	},
+	{
+		title: 'Natives HTML-Element stylen',
+		text: '[styled-components] Nutze die Syntax mit Punkt (.)',
+		code: `
+const StyledSpan = styled.span\`
+  /* css */
+\`		
+    `.trim()
+	},
+	{
+		title: 'React-Komponente stylen',
+		text: '[styled-components] Nutze die Syntax mit Klammern. Komponente (Appbar) muss className-Prop entgegen nehmen.',
+		code: `
+const StyledComp = styled(Appbar)\`
+  /* css */
+\`		
+    `.trim()
+	},
+	{
+		title: 'Styling ohne Komponente',
+		text: '[styled-components]',
+		code: `
+const GlobalStyle = createGlobalStyle\`
+  /* css */
+\`
+
+<GlobalStyle />		
+    `.trim()
+	},
+	{
+		title: 'Snippets zur Wiederverwendung erstellen',
+		text: '[styled-components]',
+		code: `
+const warningStyle = css\`
+  /* css */
+\`
+    `.trim()
+	},
+	{
+		title: 'Styled-Component mit Properties erweitern',
+		text: '[styled-components]',
+		code: `
+interface Props { warning: boolean }
+
+const Label = styled.label<Props>\`
+	\${props => (props.warning ? warningStyle : successStyle)}
+\`	
+    `.trim()
 	}
 ]
