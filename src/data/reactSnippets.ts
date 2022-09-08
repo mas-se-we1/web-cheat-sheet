@@ -51,7 +51,7 @@ const Counter = () => {
 		code: `
 useEffect(() => {
   subscribe(channel)
-	
+
   return () => {
     unsubscribe(channel)
   }
@@ -248,8 +248,80 @@ const warningStyle = css\`
 interface Props { warning: boolean }
 
 const Label = styled.label<Props>\`
-	\${props => (props.warning ? warningStyle : successStyle)}
+  \${props => (props.warning ? warningStyle : successStyle)}
 \`	
+    `.trim()
+	},
+	{
+		title: 'App Routing',
+		text: '[React Router] Routes definieren',
+		code: `
+<Routes>
+  <Route path="/" element={<App />}>
+    <Route index element={<Home />} />
+    <Route path="users" element={<Users />}>
+      <Route index element={<UsersOverview />} />
+      <Route path=":userId" element={<User />} />
+      <Route path=":userId/edit" element={<EditUser />} />
+      <Route path="new" element={<NewUser />} />
+    </Route>
+  </Route>
+  <Route path="about" element={<AboutUs />} />
+</Routes>		
+    `.trim()
+	},
+	{
+		title: 'useReducer',
+		text: 'State mittels Reducer verwalten',
+		code: `
+const [state, dispatch] = useReducer(reducer, initialState)
+    `.trim()
+	},
+	{
+		title: 'Reducer',
+		text: 'Reducer mit State-Übergängen definieren',
+		code: `
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'set-name':
+      return { ...state, name: action.name }
+    case 'set-email':
+      return { ...state, email: action.email }
+    case 'clear-all':
+      return { name: '', email: '' }
+  }
+}			
+    `.trim()
+	},
+	{
+		title: 'Reducer Actions',
+		text: 'Typisierung der Actions',
+		code: `
+type SetNameAction = {
+  type: 'set-name'
+  name: string
+}
+type SetEmailAction = {
+  type: 'set-email'
+  email: string
+}
+type ClearAllAction = {
+  type: 'clear-all'
+}
+
+type Action = SetNameAction | SetEmailAction | ClearAllAction
+    `.trim()
+	},
+	{
+		title: 'Dispatch Reducer Actions',
+		text: 'Actions an Recuer übergeben',
+		code: `
+const [state, dispatch] = useReducer(reducer, initialState)
+
+<input
+  value={state.name}
+  onChange={e => dispatch({ type: 'set-name', name: e.target.value })}
+/>  
     `.trim()
 	}
 ]
