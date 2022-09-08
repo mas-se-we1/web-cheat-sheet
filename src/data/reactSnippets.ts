@@ -253,7 +253,21 @@ const Label = styled.label<Props>\`
     `.trim()
 	},
 	{
-		title: 'App Routing',
+		title: 'Browser Router',
+		text: '[React Router] High-Order-Component, um Routing zu ermöglichen.',
+		code: `
+// index.tsx
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+)
+    `.trim()
+	},
+	{
+		title: 'App Routes',
 		text: '[React Router] Routes definieren',
 		code: `
 <Routes>
@@ -268,6 +282,36 @@ const Label = styled.label<Props>\`
   </Route>
   <Route path="about" element={<AboutUs />} />
 </Routes>		
+    `.trim()
+	},
+	{
+		title: 'useNavigation',
+		text: '[React Router] Programmatisches Navigieren',
+		code: `
+export const App = () => {
+  const navigate = useNavigate()
+
+  return (
+    <button onClick={() => navigate('/')}>
+      Go to root
+    </button>
+  )
+}
+    `.trim()
+	},
+	{
+		title: 'useParams',
+		text: '[React Router] Parameter abfragen, die mit Doppelpunkt in Routing vermerkt sind',
+		code: `
+export const UserList = () => {
+  const { userId } = useParams<{ userId: string }>()
+
+  return (
+    <Container>
+      <UserForm id={userId} />
+    </Container>
+  )
+}
     `.trim()
 	},
 	{
