@@ -1,8 +1,9 @@
-import { ReactNode } from 'react'
-import styled from 'styled-components/macro'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus as darkStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { prism as lightStyle } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import {
+	prism as lightStyle,
+	vscDarkPlus as darkStyle
+} from 'react-syntax-highlighter/dist/esm/styles/prism'
+import styled from 'styled-components/macro'
 import { Theme } from '../models/Theme'
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 	text?: string
 	language?: string
 	theme: Theme
-	children: ReactNode
+	children: string
 }
 
 export const Snippet = ({
