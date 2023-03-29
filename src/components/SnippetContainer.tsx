@@ -1,63 +1,63 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import { Theme } from '../models/Theme'
 import { Snippet } from './Snippet'
 
 interface Props {
-	query: string
-	snippets: Array<{
-		title: string
-		text: string
-		code: string
-	}>
-	language?: string
-	theme: Theme
+  query: string
+  snippets: Array<{
+    title: string
+    text: string
+    code: string
+  }>
+  language?: string
+  theme: Theme
 }
 
 export const SnippetContainer = ({
-	query,
-	snippets,
-	language,
-	theme
+  query,
+  snippets,
+  language,
+  theme
 }: Props) => {
-	let filteredSnippets = snippets
-	if (query) {
-		const lowQuery = query.toLowerCase()
-		filteredSnippets = snippets.filter(
-			s =>
-				s.code.toLowerCase().includes(lowQuery) ||
-				s.text.toLowerCase().includes(lowQuery) ||
-				s.title.toLowerCase().includes(lowQuery)
-		)
-	}
+  let filteredSnippets = snippets
+  if (query) {
+    const lowQuery = query.toLowerCase()
+    filteredSnippets = snippets.filter(
+      s =>
+        s.code.toLowerCase().includes(lowQuery) ||
+        s.text.toLowerCase().includes(lowQuery) ||
+        s.title.toLowerCase().includes(lowQuery)
+    )
+  }
 
-	return (
-		<Container>
-			{filteredSnippets.length > 0 ? (
-				filteredSnippets.map(s => (
-					<Snippet
-						key={s.title}
-						title={s.title}
-						text={s.text}
-						language={language}
-						theme={theme}
-					>
-						{s.code}
-					</Snippet>
-				))
-			) : (
-				<div>Keine Resultate</div>
-			)}
-		</Container>
-	)
+  return (
+    <Container>
+      {filteredSnippets.length > 0 ? (
+        filteredSnippets.map(s => (
+          <Snippet
+            key={s.title}
+            title={s.title}
+            text={s.text}
+            language={language}
+            theme={theme}
+          >
+            {s.code}
+          </Snippet>
+        ))
+      ) : (
+        <div>Keine Resultate</div>
+      )}
+    </Container>
+  )
 }
 
 const Container = styled.div`
-	display: inline-grid;
-	grid-template-columns: auto;
-	column-gap: 20px;
-	row-gap: 10px;
-	margin: 20px;
-	@media (min-width: 850px) {
-		grid-template-columns: minmax(auto, 280px) 1fr;
-	}
+  display: inline-grid;
+  grid-template-columns: auto;
+  column-gap: 20px;
+  row-gap: 10px;
+  margin: 20px;
+  @media (min-width: 850px) {
+    grid-template-columns: minmax(auto, 280px) 1fr;
+  }
 `

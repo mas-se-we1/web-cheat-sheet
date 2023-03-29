@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Redirect, Route, Switch } from 'react-router'
+import { Route, Routes } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components'
 import { AppBar } from './components/AppBar'
 import { SnippetContainer } from './components/SnippetContainer'
@@ -11,65 +11,74 @@ import { useStoredState } from './hooks/useStoredState'
 import { Theme } from './models/Theme'
 
 export const App = () => {
-	const [query, setQuery] = useState('')
-	const [theme, setTheme] = useStoredState<Theme>('wcs.theme', 'dark')
+  const [query, setQuery] = useState('')
+  const [theme, setTheme] = useStoredState<Theme>('wcs.theme', 'dark')
 
-	const toggleTheme = () => {
-		const newStyle = theme === 'dark' ? 'light' : 'dark'
-		setTheme(newStyle)
-	}
+  const toggleTheme = () => {
+    const newStyle = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newStyle)
+  }
 
-	return (
-		<>
-			{theme === 'dark' && <DarkOverride />}
-			<AppBar
-				query={query}
-				setQuery={setQuery}
-				theme={theme}
-				toggleTheme={toggleTheme}
-			/>
-			<main>
-				<Switch>
-					<Route exact path="/typescript">
-						<SnippetContainer
-							snippets={tsSnippets}
-							query={query}
-							theme={theme}
-						/>
-					</Route>
-					<Route exact path="/react">
-						<SnippetContainer
-							snippets={reactSnippets}
-							query={query}
-							theme={theme}
-						/>
-					</Route>
-					<Route exact path="/css">
-						<SnippetContainer
-							snippets={cssSnippets}
-							query={query}
-							language="css"
-							theme={theme}
-						/>
-					</Route>
-					<Route exact path="/git">
-						<SnippetContainer
-							snippets={gitSnippets}
-							query={query}
-							language="git"
-							theme={theme}
-						/>
-					</Route>
-					<Redirect to="react" />
-				</Switch>
-			</main>
-		</>
-	)
+  return (
+    <>
+      {theme === 'dark' && <DarkOverride />}
+      <AppBar
+        query={query}
+        setQuery={setQuery}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+      <Routes>
+        <Route
+          index
+          element={
+            <SnippetContainer
+              snippets={reactSnippets}
+              query={query}
+              theme={theme}
+            />
+          }
+        />
+        <Route
+          path="/typescript"
+          element={
+            <SnippetContainer
+              snippets={tsSnippets}
+              query={query}
+              theme={theme}
+            />
+          }
+        />
+        <Route
+          path="/css"
+          element={
+            <SnippetContainer
+              snippets={cssSnippets}
+              query={query}
+              language="css"
+              theme={theme}
+            />
+          }
+        />
+        <Route
+          path="/git"
+          element={
+            <SnippetContainer
+              snippets={gitSnippets}
+              query={query}
+              language="git"
+              theme={theme}
+            />
+          }
+        />
+      </Routes>
+    </>
+  )
 }
 
 const DarkOverride = createGlobalStyle`
-	main {
+	body {
 		background: #181a1f;
 		color: #d8dbe1;
-}
+	}
 `
